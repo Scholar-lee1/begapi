@@ -1,31 +1,32 @@
 const background = document.getElementById("background");
 
 async function getBackground() {
-const apiKey = typeof NASA_API_KEY !== 'undefined' ? NASA_API_KEY : 'DEMO_KEY';
+  let myKey = "DEMO_KEY"; 
+  
+  try {
+  } catch (e) {
 
-const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+  }
+
+  const url = `https://api.nasa.gov/planetary/apod?api_key=${myKey}`;
 
   try {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Response status: ${response.status}`);
-  }
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`NASA Error: ${response.status}`);
+    }
 
-  const result = await response.json();
-  console.log(result);
+    const result = await response.json();
 
-  if (result.media_type !== "image") {
-    console.log("APOD returned a non-image media type.");
+    if (result.media_type !== "image") {
+      return null;
+    }
+
+    return result.url;
+  } catch (error) {
+    console.log("Background failed, using fallback color:", error.message);
     return null;
   }
-
-  return result.url;
-} catch (error) {
-  console.log(error.message);
-  return null;
-}
-
-
 }
 
 window.onload = function () {
