@@ -1,9 +1,9 @@
 const background = document.getElementById("background");
 
 async function getBackground() {
-  const url =
-    `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`;
-  // Replace this with your own key from api.nasa.gov.
+const apiKey = typeof NASA_API_KEY !== 'undefined' ? NASA_API_KEY : 'DEMO_KEY';
+
+const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
 
   try {
   const response = await fetch(url);
