@@ -1,10 +1,13 @@
-#background {
+#background,
+#fact-container {
   width: 100vw;
   height: 100vh;
   background-position: center;
   background-size: cover;
   text-align: center;
   display: flow-root;
+  gap: 10px;
+  padding: 10px;
 }
 
 html,
@@ -29,7 +32,9 @@ p {
   font-size: 5vh;
   margin: 1vw;
 }
-.gloss {
+
+.gloss,
+#fact-container{
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -38,4 +43,12 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.3);
   display: inline-block;
   margin: 5vw;
+  background-position: center;
+}
+
+#fact-container{
+  width: 20vw;
+  height: 3vh;
+  padding: 20px;
+  padding-bottom: 20px;
 }

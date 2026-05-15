@@ -38,6 +38,7 @@ window.onload = function () {
       background.style["background-image"] = `url('${imageUrl}')`;
     }
   });
+  getQuote();
 };
 
 setInterval(() => {
@@ -102,3 +103,26 @@ setInterval(() => {
       }
     }
   });
+  
+
+  async function getQuote() {
+    try{
+  
+      const response = await fetch("https://api.adviceslip.com/advice");
+  
+      const data = await response.json();
+
+      const quoteText = data.slip.advice;
+
+      const factElement = document.getElementById("fact-ticker");
+      if (factElement) {
+        factElement.innerText = `"${quoteText}"`;
+      }
+    } catch (err) {
+
+    console.error("Quote failed:", err);
+    document.getElementById("fact-ticker").innerText = "Stay curious. (Fallback Quote)";
+    }
+
+}
+
